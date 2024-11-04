@@ -5,43 +5,43 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Graph g = createGraph("Graph A");
-        List<Vertex> dfs = g.depthFirstSearch();
-        System.out.println("DFS navštívené vrcholy v tomto pořadí:");
+        Graph graf = vytvoritGraf("Graf A");
+        List<Vertex> prohledavani = graf.prohledavaniDoHloubky();
+        System.out.println("Navštívené vrcholy při DFS v tomto pořadí:");
 
-        for (Vertex vertex : dfs) {
-            System.out.print(vertex.getLabel() + " ");
+        for (Vertex vrchol : prohledavani) {
+            System.out.print(vrchol.getOznaceni() + " ");
         }
         System.out.println();
     }
 
-    public static Graph createGraph(String name) {
-        Graph g = new Graph(name);
+    public static Graph vytvoritGraf(String nazev) {
+        Graph graf = new Graph(nazev);
 
-        Vertex a = new Vertex("A");
-        Vertex b = new Vertex("B");
-        Vertex c = new Vertex("C");
-        Vertex d = new Vertex("D");
-        Vertex e = new Vertex("E");
+        Vertex vrcholA = new Vertex("A");
+        Vertex vrcholB = new Vertex("B");
+        Vertex vrcholC = new Vertex("C");
+        Vertex vrcholD = new Vertex("D");
+        Vertex vrcholE = new Vertex("E");
 
-        g.addVertex(a);
-        g.addVertex(b);
-        g.addVertex(c);
-        g.addVertex(d);
-        g.addVertex(e);
+        graf.pridatVrchol(vrcholA);
+        graf.pridatVrchol(vrcholB);
+        graf.pridatVrchol(vrcholC);
+        graf.pridatVrchol(vrcholD);
+        graf.pridatVrchol(vrcholE);
 
-        a.addNeighbour(b);
-        b.addNeighbour(a);
+        vrcholA.pridatSoused(vrcholB);
+        vrcholB.pridatSoused(vrcholA);
 
-        a.addNeighbour(c);
-        c.addNeighbour(a);
+        vrcholA.pridatSoused(vrcholC);
+        vrcholC.pridatSoused(vrcholA);
 
-        c.addNeighbour(b);
-        b.addNeighbour(c);
+        vrcholC.pridatSoused(vrcholB);
+        vrcholB.pridatSoused(vrcholC);
 
-        c.addNeighbour(d);
-        d.addNeighbour(c);
+        vrcholC.pridatSoused(vrcholD);
+        vrcholD.pridatSoused(vrcholC);
 
-        return g;
+        return graf;
     }
 }

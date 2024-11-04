@@ -1,8 +1,7 @@
 package queue;
 
 public interface IQueue<T> {
-
-    public boolean isEmpty();
-    public T dequeue();
-    public void enqueue(T element);
+    boolean isEmpty();
+    T odebrat();
+    void vlozit(T prvek);
 }

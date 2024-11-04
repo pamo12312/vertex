@@ -1,32 +1,41 @@
 package graph;
+
 import java.util.ArrayList;
 import java.util.List;
+
 public class Vertex {
-    private final String label;
-    private final List<Vertex> neighbors;
-    public Vertex(String label) {
-        this.label = label;
-        this.neighbors = new ArrayList<>();
+    private final String oznaceni;
+    private final List<Vertex> sousedi;
+
+    public Vertex(String oznaceni) {
+        this.oznaceni = oznaceni;
+        this.sousedi = new ArrayList<>();
     }
-    public void addNeighbour(Vertex other) {
-        this.neighbors.add(other);
+
+    public void pridatSoused(Vertex soused) {
+        this.sousedi.add(soused);
     }
-    public List<Vertex> getNeighbours() {
-        return neighbors;
+
+    public List<Vertex> getSoused() {
+        return sousedi;
     }
-    public String getLabel() {
-        return label;
+
+    public String getOznaceni() {
+        return oznaceni;
     }
+
     @Override
     public String toString() {
-        return label + " (" + neighbors.size() + ")";
+        return oznaceni + " (" + sousedi.size() + ")";
     }
+
     @Override
     public boolean equals(Object obj) {
-        return obj instanceof Vertex && ((Vertex) obj).label.equals(this.label);
+        return obj instanceof Vertex && ((Vertex) obj).oznaceni.equals(this.oznaceni);
     }
+
     @Override
     public int hashCode() {
-        return label.hashCode();
+        return oznaceni.hashCode();
     }
 }
